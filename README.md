@@ -1,3 +1,3 @@
-# ui5-template
+# RList Frontend
 
-Template für das Deployment von UI5-Applikationen per grunt task.
+Frontend für Hausarbeit "Restaurantliste" basierend auf OpenUI5.
