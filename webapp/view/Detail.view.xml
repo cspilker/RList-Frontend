@@ -1,145 +1,15 @@
 <mvc:View
-        xmlns:core="sap.ui.core"
-        controllerName="sdsd"
+        height="100%"
+        controllerName="de.cspilker.rlist.controller.detail"
         xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
         xmlns="sap.m"
         xmlns:f="sap.f"
-        height="100%">
+        xmlns:form="sap.ui.layout.form"
+>
+    <Page
+            id="emptyPage"
+            showHeader="false">
 
-    <f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" headerExpanded="{/headerExpanded}">
-        <!-- DynamicPage Title -->
-        <f:title>
-            <f:DynamicPageTitle backgroundDesign="Translucent">
-                <f:heading>
-                    <Title text="{restaurant>Rname}"/>
-                </f:heading>
-                <f:expandedContent>
-                    <Label text="Italienisch   -   €€€"/>
-                </f:expandedContent>
-                <f:snappedContent>
-                    <Label text="Italienisch   -   €€€"/>
-                </f:snappedContent>
-                <f:actions>
-                    <ToolbarSpacer/>
-                    <Button
-                            text="Edit"
-                            type="Emphasized"/>
-                    <Button
-                            text="Delete"
-                            type="Transparent"/>
-                    <Button
-                            text="Copy"
-                            type="Transparent"/>
-                    <Button
-                            icon="sap-icon://action"
-                            type="Transparent"/>
-                </f:actions>
-            </f:DynamicPageTitle>
-        </f:title>
-
-        <!-- DynamicPage Header -->
-
-        <f:header>
-            <f:DynamicPageHeader pinnable="true" backgroundDesign="Translucent">
-                <FlexBox
-                        alignItems="Start"
-                        justifyContent="SpaceBetween">
-                </FlexBox>
-            </f:DynamicPageHeader>
-        </f:header>
-
-        <f:content>
-            <HBox>
-                <core:Title text="Kontakt"/>
-
-            </HBox>
-
-            <HBox>
-                <Image src="https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/9.7001,53.4761,16,21/200x200?access_token=pk.eyJ1IjoiY2RzcCIsImEiOiJja2lyc212NnAwcWwwMnRsM3l3Y2FtOTdtIn0.qJVtbf1OLqQHAlF1KzqiAw"/>
-
-                <form:Form id="FormDisplay354"
-                           editable="false">
-                    <form:title>
-                        <core:Title text="Kontakt"/>
-                    </form:title>
-                    <form:layout>
-                        <form:ResponsiveGridLayout/>
-                    </form:layout>
-
-                    <form:formContainers>
-                        <form:FormContainer>
-                            <form:formElements>
-                                <form:FormElement label="Straße">
-                                    <form:fields>
-                                        <Text text="{restaurant>Street}" id="nameText"/>
-                                    </form:fields>
-                                </form:FormElement>
-                                <form:FormElement label="Ort">
-                                    <form:fields>
-                                        <Text text="{restaurant>Postcode}"/>
-                                    </form:fields>
-                                </form:FormElement>
-
-                                <form:FormElement label="Telefon">
-                                    <form:fields>
-                                        <Text text="{restaurant>Telephone}"/>
-                                    </form:fields>
-                                </form:FormElement>
-                                <form:FormElement label="Website">
-                                    <form:fields>
-                                        <Link text="{restaurant>Website}"
-                                              href="{restaurant>Website}"/>
-                                    </form:fields>
-                                </form:FormElement>
-                            </form:formElements>
-                        </form:FormContainer>
-                        <form:FormContainer>
-                            <form:formElements>
-                                <form:FormElement label="Straße">
-                                    <form:fields>
-                                        <Text text="{restaurant>Street}" id="nameTexti"/>
-                                    </form:fields>
-                                </form:FormElement>
-                                <form:FormElement label="Ort">
-                                    <form:fields>
-                                        <Text text="{restaurant>Postcode}"/>
-                                    </form:fields>
-                                </form:FormElement>
-
-                                <form:FormElement label="Telefon">
-                                    <form:fields>
-                                        <Text text="{restaurant>Telephone}"/>
-                                    </form:fields>
-                                </form:FormElement>
-                                <form:FormElement label="Website">
-                                    <form:fields>
-                                        <Link text="{restaurant>Website}"
-                                              href="{restaurant>Website}"/>
-                                    </form:fields>
-                                </form:FormElement>
-                            </form:formElements>
-                        </form:FormContainer>
-                    </form:formContainers>
-                </form:Form>
-
-
-            </HBox>
-
-        </f:content>
-
-
-        <!-- DynamicPage Footer -->
-        <f:footer>
-            <OverflowToolbar>
-                <Button icon="sap-icon://message-popup"
-                        text="{/messagesLength}"
-                        type="Emphasized"
-                        press="onMessageButtonPress"
-                        visible="{= !!${/messagesLength}}"/>
-                <ToolbarSpacer/>
-                <Button type="Accept" text="Accept"/>
-                <Button type="Reject" text="Reject"/>
-            </OverflowToolbar>
-        </f:footer>
-    </f:DynamicPage>
+    </Page>
 </mvc:View>

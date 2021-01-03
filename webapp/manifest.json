@@ -1,0 +1,92 @@
+{
+  "_version": "1.12.0",
+  "sap.app": {
+    "id": "de.cspilker.rlist",
+    "type": "application",
+    "applicationVersion": {
+      "version": "0.1"
+    },
+    "dataSources": {
+      "RListService": {
+        "uri": "https://r42z.ucc.ovgu.de/sap/opu/odata/sap/ZVG_18A_31_RLIST_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "de.cspilker.rlist.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "fcl"
+    },
+    "dependencies": {
+      "minUI5Version": "1.60.0",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.f": {}
+      }
+    },
+    "config": {
+      "fullWidth": true
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "viewPath": "de.cspilker.rlist.view",
+        "controlId": "flexibleColumnLayout",
+        "transition": "slide",
+        "bypassed": {},
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": ":layout:",
+          "name": "master",
+          "target": [
+            "master",
+            "detail"
+          ]
+        },
+        {
+          "pattern": "detail/{entry}/{layout}",
+          "name": "detail",
+          "target": [
+            "master",
+            "detail"
+          ]
+        }
+      ],
+      "targets": {
+        "master": {
+          "viewName": "Master",
+          "controlAggregation": "beginColumnPages"
+        },
+        "detail": {
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages"
+        }
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "de.cspilker.rlist.i18n.i18n"
+        }
+      },
+      "restaurant": {
+        "dataSource": "RListService",
+        "settings": {
+          "useBatch": false,
+          "defaultBindingMode": "TwoWay"
+        }
+      }
+    }
+  }
+}

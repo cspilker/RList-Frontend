@@ -1,0 +1,52 @@
+<mvc:View
+        controllerName="de.cspilker.rlist.controller.Master"
+        xmlns="sap.m"
+        xmlns:f="sap.f"
+        xmlns:mvc="sap.ui.core.mvc">
+    <f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+        <!-- DynamicPage Title -->
+        <f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>Master.pageTitle}"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Content -->
+        <f:content>
+            <VBox fitContainer="true">
+                <OverflowToolbar class="sapFDynamicPageAlignContent" >
+                    <ToolbarSpacer/>
+                    <SearchField search=".onSearch" width="25rem" />
+                    <ToolbarSpacer/>
+                    <OverflowToolbarButton icon="sap-icon://add" type="Transparent"
+                                           press=".onAdd"/>
+
+                </OverflowToolbar>
+                <Table
+                        id="RListTable"
+                        inset="false"
+                        items="{path: 'restaurant>/RestaurantListEntrySet'}"
+                        class="sapFDynamicPageAlignContent"
+                        width="auto">
+                    <columns>
+                        <Column width="12em">
+                            <Text text="{i18n>Master.restaurant}"/>
+                        </Column>
+                        <Column>
+                            <Text text="{i18n>Master.city}"/>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press=".onListItemPress">
+                            <cells>
+                                <ObjectIdentifier title="{restaurant>Rname}" text="Italienisch"/>
+                                <Text text="{ path: 'restaurant>Postcode'}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,110 @@
+<core:FragmentDefinition
+        xmlns:core="sap.ui.core"
+        xmlns:form="sap.ui.layout.form"
+        xmlns:f="sap.f"
+        xmlns="sap.m">
+    <f:DynamicPage id="dynamicPageId" preserveHeaderStateOnScroll="true" headerExpanded="false"
+                   toggleHeaderOnTitleClick="false">
+        <f:title>
+            <f:DynamicPageTitle backgroundDesign="Solid">
+                <f:heading>
+                    <Title text="{restaurant>Rname}"/>
+                </f:heading>
+                <f:snappedContent>
+                    <Label text="Italienisch"/>
+                    <FlexBox
+                            alignItems="Start"
+                            justifyContent="Start"
+                            height="20px">
+                        <ObjectStatus
+                                class="sapUiTinyMarginEnd"
+                                text="{i18n>Detail.Display.flagVegetarian}"
+                                inverted="true"
+                                icon="sap-icon://accept"
+                                state="None"
+                                visible="{restaurant>FlVegetarian}"/>
+                        <ObjectStatus
+                                class="sapUiTinyMarginEnd"
+                                text="{i18n>Detail.Display.flagBar}"
+                                inverted="true"
+                                icon="sap-icon://accept"
+                                state="None"
+                                visible="{restaurant>FlBar}"
+                        />
+                        <ObjectStatus
+                                class="sapUiTinyMarginEnd"
+                                text="{i18n>Detail.Display.flagWheelchair}"
+                                inverted="true"
+                                icon="sap-icon://accept"
+                                state="None"
+                                visible="{restaurant>FlWheelchair}"/>
+                    </FlexBox>
+                </f:snappedContent>
+                <f:actions>
+                    <ToolbarSpacer/>
+                    <Button
+                            icon="sap-icon://edit"
+                            type="Transparent"
+                            press=".onPressEdit"/>
+                </f:actions>
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="false" backgroundDesign="Translucent">
+            </f:DynamicPageHeader>
+        </f:header>
+
+
+        <f:content>
+
+
+            <VBox class="sapUiTinyMargin">
+                <Text text="{restaurant>Description}" class="sapUiMediumMarginBottom"></Text>
+                <Panel
+                        id="containerLayoutuz"
+                        headerText="{i18n>Detail.Display.contact}"
+                        width="100%">
+                    <FlexBox alignContent="Start" alignItems="Center">
+
+
+                        <Image height="150px" width="150px"
+                               src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/9.7001,53.4761,16,21/150x150@2x?attribution=false&amp;logo=false&amp;access_token=pk.eyJ1IjoiY2RzcCIsImEiOiJja2lyc212NnAwcWwwMnRsM3l3Y2FtOTdtIn0.qJVtbf1OLqQHAlF1KzqiAw'/>
+                        <form:Form editable="true">
+                            <form:layout>
+                                <form:GridLayout/>
+                            </form:layout>
+                            <form:formContainers>
+                                <form:FormContainer>
+                                    <form:formElements>
+                                        <form:FormElement label="{i18n>Detail.Display.website}">
+                                            <form:fields>
+                                                <Link text="{restaurant>Website}" href="{restaurant>Website}"></Link>
+                                            </form:fields>
+                                        </form:FormElement>
+                                        <form:FormElement label="{i18n>Detail.Display.telephone}">
+                                            <form:fields>
+                                                <Text text="{restaurant>Telephone}"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                        <form:FormElement label="{i18n>Detail.Display.city}">
+                                            <form:fields>
+                                                <Text text="{restaurant>Postcode}"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                        <form:FormElement label="{i18n>Detail.Display.street}">
+                                            <form:fields>
+                                                <Text text="{restaurant>Street}" id="countryText"/>
+                                            </form:fields>
+                                        </form:FormElement>
+                                    </form:formElements>
+                                </form:FormContainer>
+                            </form:formContainers>
+                        </form:Form>
+                    </FlexBox>
+                </Panel>
+            </VBox>
+        </f:content>
+    </f:DynamicPage>
+</core:FragmentDefinition>
+
