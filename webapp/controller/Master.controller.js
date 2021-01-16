@@ -28,8 +28,11 @@ sap.ui.define([
         },
 
 
-        onAdd: function () {
-            MessageBox.information("This functionality is not ready yet.", {title: "Aw, Snap!"});
+        onPressAdd: function (oEvent) {
+            //MessageBox.information("Working on it!", {title: "Aw, Snap!"});
+            var oModel = this.getView().getModel("restaurant");
+            sap.ui.core.UIComponent.getRouterFor(this).navTo("add", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded});
+            console.log("add");
         },
 
 

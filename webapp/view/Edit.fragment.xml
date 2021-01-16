@@ -10,14 +10,15 @@
         <f:title>
             <f:DynamicPageTitle backgroundDesign="Solid">
                 <f:heading>
-                    <Title text="{i18n>Detail.Edit.title}"/>
+                    <Title id="detailEditFragmentTitle" text="{i18n>Detail.Edit.title}"/>
                 </f:heading>
                 <f:snappedContent>
-                    <FormattedText htmlText="{i18n>Detail.Edit.id} #{restaurant>Rid}  -  {i18n>Detail.Edit.createdBy} {restaurant>Uname}"/>
+                    <Text id="detailEditFragmentSubtitle" visible="{viewModel>/notAddMode}" renderWhitespace="true"
+                          text="{i18n>Detail.Edit.id} #{restaurant>Rid}  -  {i18n>Detail.Edit.createdBy} {restaurant>Uname}"/>
                 </f:snappedContent>
                 <f:actions>
-                    <Button id="save" text="{i18n>Detail.Edit.save}" type="Accept" press="e"/>
-                    <Button id="delete" text="{i18n>Detail.Edit.delete}" type="Reject" press="e"/>
+                    <Button id="save" text="{i18n>Detail.Edit.save}" type="Accept" press="onPressSave"/>
+                    <Button id="delete" text="{i18n>Detail.Edit.delete}" type="Reject" press="onPressDelete"/>
                     <Button id="cancel" text="{i18n>Detail.Edit.cancel}" type="Transparent" press="onPressCancel"/>
                 </f:actions>
             </f:DynamicPageTitle>
@@ -53,22 +54,28 @@
                         <Input id="naome" value="{restaurant>Postcode}"/>
 
                         <Label text="{i18n>Detail.Edit.coordinates}"/>
-                        <Input value="12.222">
+                        <Input value="{restaurant>Latitude}">
                             <layoutData>
                                 <l:GridData span="XL3 L2 M3 S4"/>
                             </layoutData>
                         </Input>
-                        <Input value="12.222">
+                        <Input value="{restaurant>Longitude}">
                             <layoutData>
                                 <l:GridData span="XL3 L2 M3 S4"/>
                             </layoutData>
                         </Input>
 
                         <core:Title text="{i18n>Detail.Edit.restaurantDetails}"/>
-                        <Label text="{i18n>Detail.Edit.restaurantName}"/>
-                        <Input value="{restaurant>Rname}"/>
+                        <Label text="{i18n>Detail.Edit.restaurantName}" required="true"/>
+                        <Input valueStateText="Name must not be empty. Maximum 10 characters."
+                               value="{path : 'Rname',
+                               type : 'sap.ui.model.odata.type.String',
+                               constraints : {
+                               minLength: 1,
+                               maxLength: 10
+                               } }"/>
                         <Label text="{i18n>Detail.Edit.type}"/>
-                        <Input value="Italienisch"/>
+                        <Input value="{restaurant>Rtype}"/>
 
                         <Label text="{i18n>Detail.Edit.description}"/>
                         <TextArea growingMaxLines="8" growing="true" value="{restaurant>Description}"></TextArea>
@@ -76,8 +83,13 @@
                         <Label text="{i18n>Detail.Edit.website}"/>
                         <Input value="{restaurant>Website}"/>
                         <Label text="{i18n>Detail.Edit.telephone}"/>
-                        <Input value="{restaurant>Telephone}"/>
-
+                        <Input liveChange="onLiveChange" id="nameInput"
+                                class="sapUiSmallMarginBottom"
+                               maxLength="10"
+                                placeholder="Telefonummer eingeben"
+                                valueStateText="Name must not be empty. Maximum 10 characters."
+                                value="{path : '/restaurant>Rname', type : 'sap.ui.model.type.String', constraints : { minLength: 1, maxLength: 10 } }"
+                                change=".onNameChange"/>
                         <Label text="{i18n>Detail.Edit.flagVegetarian}"/>
                         <CheckBox selected="{restaurant>FlVegetarian}"/>
                         <Label text="{i18n>Detail.Edit.flagBar}"/>

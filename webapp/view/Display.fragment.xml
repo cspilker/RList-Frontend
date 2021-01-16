@@ -11,7 +11,7 @@
                     <Title text="{restaurant>Rname}"/>
                 </f:heading>
                 <f:snappedContent>
-                    <Label text="Italienisch"/>
+                    <Label text="{restaurant>Rtype}"/>
                     <FlexBox
                             alignItems="Start"
                             justifyContent="Start"
@@ -69,7 +69,7 @@
 
 
                         <Image height="150px" width="150px"
-                               src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/9.7001,53.4761,16,21/150x150@2x?attribution=false&amp;logo=false&amp;access_token=pk.eyJ1IjoiY2RzcCIsImEiOiJja2lyc212NnAwcWwwMnRsM3l3Y2FtOTdtIn0.qJVtbf1OLqQHAlF1KzqiAw'/>
+                               src='https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/{restaurant>Latitude},{restaurant>Longitude},16,21/150x150@2x?attribution=false&amp;logo=false&amp;access_token=pk.eyJ1IjoiY2RzcCIsImEiOiJja2lyc212NnAwcWwwMnRsM3l3Y2FtOTdtIn0.qJVtbf1OLqQHAlF1KzqiAw'/>
                         <form:Form editable="true">
                             <form:layout>
                                 <form:GridLayout/>

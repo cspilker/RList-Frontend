@@ -20,13 +20,14 @@
                     <SearchField search=".onSearch" width="25rem" />
                     <ToolbarSpacer/>
                     <OverflowToolbarButton icon="sap-icon://add" type="Transparent"
-                                           press=".onAdd"/>
+                                           press=".onPressAdd"/>
 
                 </OverflowToolbar>
                 <Table
                         id="RListTable"
                         inset="false"
-                        items="{path: 'restaurant>/RestaurantListEntrySet'}"
+                        items="{path: 'restaurant>/RestaurantListEntrySet',
+                         sorter: {path:'Postcode', group: true} }"
                         class="sapFDynamicPageAlignContent"
                         width="auto">
                     <columns>
@@ -40,7 +41,7 @@
                     <items>
                         <ColumnListItem type="Navigation" press=".onListItemPress">
                             <cells>
-                                <ObjectIdentifier title="{restaurant>Rname}" text="Italienisch"/>
+                                <ObjectIdentifier title="{restaurant>Rname}" text="{restaurant>Rtype}"/>
                                 <Text text="{ path: 'restaurant>Postcode'}"/>
                             </cells>
                         </ColumnListItem>

@@ -60,6 +60,14 @@
             "master",
             "detail"
           ]
+        },
+        {
+          "pattern": "add/{layout}",
+          "name": "add",
+          "target": [
+            "master",
+            "add"
+          ]
         }
       ],
       "targets": {
@@ -68,6 +76,10 @@
           "controlAggregation": "beginColumnPages"
         },
         "detail": {
+          "viewName": "Detail",
+          "controlAggregation": "midColumnPages"
+        },
+        "add": {
           "viewName": "Detail",
           "controlAggregation": "midColumnPages"
         }
