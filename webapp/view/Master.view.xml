@@ -17,7 +17,7 @@
             <VBox fitContainer="true">
                 <OverflowToolbar class="sapFDynamicPageAlignContent" >
                     <ToolbarSpacer/>
-                    <SearchField search=".onSearch" width="25rem" />
+                    <SearchField search=".onSearch" width="25rem" placeholder="Nach Ortschaft suchen ..."/>
                     <ToolbarSpacer/>
                     <OverflowToolbarButton icon="sap-icon://add" type="Transparent"
                                            press=".onPressAdd"/>

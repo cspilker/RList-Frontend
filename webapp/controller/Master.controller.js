@@ -19,18 +19,16 @@ sap.ui.define([
         onSearch: function (oEvent) {
             var aFilter = [],
                 sQuery = oEvent.getParameter("query");
-            var oList = this.getView().byId("RListEntries");
+            var oList = this.getView().byId("RListTable");
             var oBinding = oList.getBinding( "items" );
             if (sQuery && sQuery.length > 0) {
-                aFilter.push(new Filter("Username", FilterOperator.Contains, sQuery));
+                aFilter.push(new Filter("Postcode", FilterOperator.Contains, sQuery));
             }
             oBinding.filter(aFilter);
         },
 
 
         onPressAdd: function (oEvent) {
-            //MessageBox.information("Working on it!", {title: "Aw, Snap!"});
-            var oModel = this.getView().getModel("restaurant");
             sap.ui.core.UIComponent.getRouterFor(this).navTo("add", {layout: fioriLibrary.LayoutType.TwoColumnsMidExpanded});
             console.log("add");
         },

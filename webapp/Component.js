@@ -21,7 +21,7 @@ sap.ui.define([
             oRouter.attachBeforeRouteMatched(this._onBeforeRouteMatched, this);
             oRouter.initialize();
 
-            //set language Model
+
             var i18nModel = new ResourceModel({
                 bundleName:"de.cspilker.rlist.i18n.i18n"
             });
